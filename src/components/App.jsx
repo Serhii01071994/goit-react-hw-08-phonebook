@@ -1,20 +1,24 @@
 import { PhoneBook } from './PhoneBook/PhoneBook';
 import { ContactList } from './ContactList/ContactList';
 import { ContactFilter } from './ContactFilter/ContactFilter';
-import css from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
   selectError,
   selectIsloading,
 } from 'redux/contacts.selectors';
+import {
+  addContactsThunk,
+  deleteContactsThunk,
+  requestContacts,
+} from 'redux/contactsReducer';
 import { selectFilter } from 'redux/filter.selectors';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addContactsThunk, deleteContactsThunk, requestContacts } from 'redux/contactsReducer';
 import { nanoid } from 'nanoid';
 import { useEffect } from 'react';
 import { Loading } from 'notiflix';
+import { StyledAppContainer } from './App.styled';
 
 export const App = () => {
   const contacts = useSelector(selectContacts);
@@ -46,17 +50,18 @@ export const App = () => {
     try {
       return contacts.filter(
         contact =>
-          contact.name.toLowerCase().includes(filter.toLowerCase()) || contact.number.includes(filter)
+          contact.name.toLowerCase().includes(filter.toLowerCase()) ||
+          contact.number.includes(filter)
       );
     } catch (error) {
       return contacts;
     }
   };
 
-    const handleDeleteContact = id => {
-      dispatch(deleteContactsThunk(id));
+  const handleDeleteContact = id => {
+    dispatch(deleteContactsThunk(id));
   };
-  
+
   useEffect(() => {
     dispatch(requestContacts());
   }, [dispatch]);
@@ -69,28 +74,28 @@ export const App = () => {
     }
   }, [isLoading]);
 
-    useEffect(() => {
-      if (error !== null) {
-        toast.error(error, {
-          position: 'top-center',
-          autoClose: 2000,
-          closeOnClick: true,
-          pauseOnHover: true,
-        });
-      }
-    }, [error]);
+  useEffect(() => {
+    if (error !== null) {
+      toast.error(error, {
+        position: 'top-center',
+        autoClose: 2000,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
+    }
+  }, [error]);
 
   return (
-    <div className={css.container}>
-      <h1 className={css.title}>Phonebook</h1>
+    <StyledAppContainer>
+      <h1 className="title">Phonebook</h1>
       <PhoneBook handleAddNumber={addContact} />
-      <h2 className={css.title}>Contacts</h2>
+      <h2 className="title">Contacts</h2>
       <ContactFilter filter={filter} contacts={contacts} />
       <ContactList
-        contacts={filteredContacts(filter)??[]}
+        contacts={filteredContacts(filter) ?? []}
         handleDeleteContact={handleDeleteContact}
       />
       <ToastContainer />
-    </div>
+    </StyledAppContainer>
   );
 };

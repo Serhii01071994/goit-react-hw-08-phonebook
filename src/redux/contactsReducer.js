@@ -12,7 +12,7 @@ export const requestContacts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const contacts = await fetchContacts();
-      console.log('contacts:', contacts);
+      // console.log('contacts:', contacts);
       return contacts;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -25,7 +25,7 @@ export const addContactsThunk = createAsyncThunk(
   async (newContact, thunkAPI) => {
     try {
       const addedContacts = await addContact(newContact);
-      console.log('addedContacts:', addedContacts);
+      // console.log('addedContacts:', addedContacts);
       return addedContacts;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -38,7 +38,7 @@ export const deleteContactsThunk = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const deletedContacts = await deleteContact(id);
-      console.log('deletedContacts:', deletedContacts);
+      // console.log('deletedContacts:', deletedContacts);
       return deletedContacts;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
