@@ -16,7 +16,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <App />
         </BrowserRouter>
       </PersistGate>
-      <App />
     </Provider>
   </React.StrictMode>
 );
