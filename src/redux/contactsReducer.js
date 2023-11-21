@@ -46,15 +46,13 @@ export const deleteContactsThunk = createAsyncThunk(
   }
 );
 
-
-
 const contactsSlice = createSlice({
   name: 'contact',
   initialState: INITIAL_STATE,
   extraReducers: builder =>
     builder
       // GetContact
-      .addCase(requestContacts.pending, (state, action) => {
+      .addCase(requestContacts.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
@@ -67,7 +65,7 @@ const contactsSlice = createSlice({
         state.error = action.payload;
       })
       // AddContact
-      .addCase(addContactsThunk.pending, (state, action) => {
+      .addCase(addContactsThunk.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })

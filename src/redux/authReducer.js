@@ -14,7 +14,7 @@ const INITIAL_STATE = {
   },
   token: null,
   isLoading: false,
-  authentification: false,
+  authenticated: false,
   error: null,
 };
 
@@ -101,7 +101,36 @@ const userSlice = createSlice({
       .addCase(registerThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      //   Логин
+      .addCase(loginThunk.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(loginThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.authenticated = true;
+        state.token = action.payload.token;
+        state.user = action.payload.user;
+      })
+      .addCase(loginThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      // ---------- REFRESH USER ----------------
+      .addCase(refreshUserThunk.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(refreshUserThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.authenticated = true;
+        state.user = action.payload;
+      })
+      .addCase(refreshUserThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       }),
 });
 
-export const userReducer = userSlice.reducer;
+export const AuthReducer = userSlice.reducer;
