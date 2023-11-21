@@ -1,18 +1,18 @@
 import { StyledNavLink } from 'components/App.styled';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAuthAuthenticated,  } from 'redux/auth.selectors';
+import { selectAuthAuthenticated, selectAuthUserData,  } from 'redux/auth.selectors';
 import { logOutThunk } from 'redux/authReducer';
 
 
 export const Navigation = () => {
   const authenticated = useSelector(selectAuthAuthenticated);
-  const user = useSelector(selectAuthAuthenticated);
-const dispatch = useDispatch();
+//   const user = useSelector(selectAuthUserData);
+// const dispatch = useDispatch();
    
-   const onLogOut = () => {
-     dispatch(logOutThunk());
-   };
+  //  const onLogOut = () => {
+  //    dispatch(logOutThunk());
+  //  };
   return (
     <header>
       <nav>
@@ -23,13 +23,8 @@ const dispatch = useDispatch();
           <>
             <StyledNavLink className="header-link" to="/contacts">
               Contacts
-            </StyledNavLink>
-            <div>
-              <p>Welcome, {user.mail}</p>
-              <button onClick={onLogOut}>
-                Log Out
-              </button>
-            </div>
+           </StyledNavLink>
+           <UserMenu/>
           </>
         ) : (
           <>

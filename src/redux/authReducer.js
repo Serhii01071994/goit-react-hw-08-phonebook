@@ -9,8 +9,8 @@ import {
 
 const INITIAL_STATE = {
   user: {
-    name: '',
-    mail: '',
+    name: null,
+    mail: null,
   },
   token: null,
   isLoading: false,
@@ -117,7 +117,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-        //   LogOut
+      //   LogOut
       .addCase(logOutThunk.pending, state => {
         state.error = null;
         state.isLoading = true;

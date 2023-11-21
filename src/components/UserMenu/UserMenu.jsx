@@ -11,12 +11,10 @@ export const UserMenu = () => {
   };
   return (
     <StyledUserMenu>
-      <p>Welcome, {user.name}</p>
+      <p>Welcome, {user.mail}</p>
       <button onClick={onLogOut}>
         Log Out
       </button>
-      {/* <p>Hello {user.mail}</p>
-      <button onClick={onLogOut}>Log Out</button> */}
     </StyledUserMenu>
   );
 };
