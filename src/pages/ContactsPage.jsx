@@ -51,9 +51,7 @@ const dispatch = useDispatch();
 
   return (
     <div>
-      <h1 className="title">Phonebook</h1>
       <PhoneBook handleAddNumber={addContact} />
-      <h2 className="title">Contacts</h2>
       <ContactFilter filter={filter} contacts={contacts} />
       <ContactList
         contacts={filteredContacts(filter) ?? []}

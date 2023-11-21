@@ -1,18 +1,15 @@
 
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectError,
-  selectIsloading,
-} from 'redux/contacts.selectors';
+import { useDispatch } from 'react-redux';
+
 import 'react-toastify/dist/ReactToastify.css';
 import { Suspense, lazy, useEffect } from 'react';
-import { Loading } from 'notiflix';
 import { StyledAppContainer } from './App.styled';
 import Loader from './Loader/Loader';
 import { Route, Routes } from 'react-router-dom';
 import { Navigation } from './Navigation/Navigation';
-import { requestContacts } from 'redux/contactsReducer';
-import { toast } from 'react-toastify';
+import PrivateRoute from './Rotes/PrivateRoute';
+import RestictedRoute from './Rotes/RestictedRoute';
+import { refreshUserThunk } from 'redux/authReducer';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const SignUpPage = lazy(() => import('pages/SignUpPage'));
@@ -21,41 +18,38 @@ const ContactsPage = lazy(() => import('pages/ContactsPage'));
 
 const appRoutes = [
   { path: '/', element: <HomePage /> },
-  { path: '/register', element: <SignUpPage /> },
-  { path: '/login', element: <LoginPage /> },
-  { path: '/contacts', element: <ContactsPage /> },
+  {
+    path: '/contacts',
+    element: (
+      <PrivateRoute>
+        <ContactsPage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: '/register',
+    element: (
+      <RestictedRoute>
+        <SignUpPage />
+      </RestictedRoute>
+    ),
+  },
+  {
+    path: '/login',
+    element: (
+      <RestictedRoute>
+        <LoginPage />
+      </RestictedRoute>
+    ),
+  },
 ];
 
 export const App = () => {
-  const isLoading = useSelector(selectIsloading);
-  const error = useSelector(selectError);
- 
   const dispatch = useDispatch();
 
- 
-
   useEffect(() => {
-    dispatch(requestContacts());
+    dispatch(refreshUserThunk());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (isLoading) {
-      Loading.standard();
-    } else {
-      Loading.remove();
-    }
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (error !== null) {
-      toast.error(error, {
-        position: 'top-center',
-        autoClose: 2000,
-        closeOnClick: true,
-        pauseOnHover: true,
-      });
-    }
-  }, [error]);
 
   return (
     <StyledAppContainer>

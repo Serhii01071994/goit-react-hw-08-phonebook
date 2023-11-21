@@ -27,7 +27,7 @@ export const requestLogout = async () => {
 };
 // Информация о пользователе
 export const requestCurrentUser = async () => {
-  const { data } = await contactsInstance.пуе('/users/current');
+  const { data } = await contactsInstance.get('/users/current');
   return data;
 };
 // Запрос всех контактов

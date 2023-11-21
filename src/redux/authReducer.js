@@ -117,6 +117,21 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+        //   LogOut
+      .addCase(logOutThunk.pending, state => {
+        state.error = null;
+        state.isLoading = true;
+      })
+      .addCase(logOutThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = INITIAL_STATE.user;
+        state.token = null;
+        state.authenticated = false;
+      })
+      .addCase(logOutThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
       // ---------- REFRESH USER ----------------
       .addCase(refreshUserThunk.pending, state => {
         state.isLoading = true;

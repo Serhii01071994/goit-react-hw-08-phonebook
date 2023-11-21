@@ -32,6 +32,7 @@ export const PhoneBook = ({ handleAddNumber }) => {
           setNumber('');
         }}
       >
+        <h1 className="title">Phonebook</h1>
         <label className={css.label}>
           Name
           <input

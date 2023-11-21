@@ -2,10 +2,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledAppContainer = styled.div`
-    width: 400px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
+ 
     margin-right: auto;
     margin-left: auto;
     background-color: #f5f5f5;
@@ -34,3 +31,6 @@ export const StyledNavLink = styled(NavLink)`
     color: white;
   }
 `;
+export const StyledUserMenu = styled.div`
+background-color: lightblue;
+`
