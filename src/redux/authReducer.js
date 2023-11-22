@@ -10,7 +10,7 @@ import {
 const INITIAL_STATE = {
   user: {
     name: null,
-    mail: null,
+    email: null,
   },
   token: null,
   isLoading: false,
@@ -64,9 +64,9 @@ export const refreshUserThunk = createAsyncThunk(
     const token = state.auth.token;
     try {
       setToken(token);
-      await requestCurrentUser();
+      const data = await requestCurrentUser();
 
-      return;
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

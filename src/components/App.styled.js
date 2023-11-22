@@ -2,35 +2,73 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledAppContainer = styled.div`
- 
-    margin-right: auto;
-    margin-left: auto;
-    background-color: #f5f5f5;
-
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #f5f5f5;
 
   .title {
     margin-bottom: 20px;
     text-align: center;
   }
+
+  .header {
+    background-color: lightblue;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+  }
 `;
 export const StyledNavLink = styled(NavLink)`
-  color: black;
-  border: 1px solid black;
-  border-radius: 10px;
+  color: grey;
   display: inline-block;
-  padding: 20px;
-  font-size: 22px;
+  font-size: 16px;
+  font-weight:500;
   text-decoration: none;
-  margin-right: 15px;
-
+  
   transition: all 0.3s;
 
   &.active {
-    border: 1px solid white;
-    background-color: black;
-    color: white;
+    color: blue;
   }
 `;
 export const StyledUserMenu = styled.div`
-background-color: lightblue;
-`
+  display: flex;
+  justify-content: flex-end;
+
+  .email {
+    color: blue;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .logout {
+    color: tomato;
+    border-radius: 10px;
+    border: 1px solid white;
+    display: inline-block;
+    font-size: 14px;
+    text-decoration: none;
+    margin-right: 15px;
+    margin-left: 15px;
+    font-weight: 550;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+`;
+
+export const StyledHomePage = styled.div`
+  .home-title {
+    color: blue;
+    display:block;
+    font-size: 40px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+  }
+`;

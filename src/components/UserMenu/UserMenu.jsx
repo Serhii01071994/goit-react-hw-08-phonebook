@@ -10,9 +10,10 @@ export const UserMenu = () => {
     dispatch(logOutThunk());
   };
   return (
-    <StyledUserMenu>
-      <p>Welcome, {user.mail}</p>
-      <button onClick={onLogOut}>
+      <StyledUserMenu>
+          
+      <p className='email'>{user.email}</p>
+      <button className='logout' onClick={onLogOut}>
         Log Out
       </button>
     </StyledUserMenu>
