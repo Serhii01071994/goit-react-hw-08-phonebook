@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const StyledAppContainer = styled.div`
   margin-right: auto;
   margin-left: auto;
-  background-color: #f5f5f5;
+
 
   .title {
     margin-bottom: 20px;
@@ -64,11 +64,110 @@ export const StyledUserMenu = styled.div`
 
 export const StyledHomePage = styled.div`
   .home-title {
-    color: blue;
-    display:block;
+    margin-top: 50px;
+    color: black;
+    display: block;
     font-size: 40px;
     font-weight: 500;
     text-decoration: none;
     text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+  }
+
+  .link {
+    padding: 10px;
+    border: 1px solid blue;
+    border-radius: 10px;
+    font-weight: 600;
+    color: white;
+    background-color:blue;
+    
+  }
+`;
+
+export const StyledLoginPage = styled.div`
+width:300px;
+margin-right:auto;
+margin-left:auto;
+
+  .form {
+    margin-bottom: 20px;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .input {
+    border: 1px solid #ccc;
+    width: 278px;
+    border-radius: 5px;
+    outline: inherit;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .input:focus {
+    border: 1px solid rgb(108, 177, 108);
+  }
+
+  .login {
+    width: 278px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid blue;
+    background-color: blue;
+    font-size: 18px;
+    color: aliceblue;
+    cursor: pointer;
+  }
+`;
+
+export const StyledSignUp = styled.div`
+  width: 290px;
+  margin-right: auto;
+  margin-left: auto;
+
+  .form {
+    margin-bottom: 20px;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .input {
+    border: 1px solid #ccc;
+    width: 278px;
+    border-radius: 5px;
+    outline: inherit;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .input:focus {
+    border: 1px solid rgb(108, 177, 108);
+  }
+
+  .login {
+    width: 278px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid blue;
+    background-color: blue;
+    font-size: 18px;
+    color: aliceblue;
+    cursor: pointer;
   }
 `;

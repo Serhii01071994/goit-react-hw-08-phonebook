@@ -1,7 +1,7 @@
 import css from './ContactList.module.css';
 
 export const ContactList = ({ contacts, handleDeleteContact }) => (
-  <ul>
+  <ul className={css.list}>
     <h2 className="title">Contacts</h2>
     {contacts.map(contact => (
       <li className={css.item} key={contact.id}>

@@ -13,6 +13,7 @@ export const Navigation = () => {
         {authenticated ? (
           <>
             <StyledNavLink to="/contacts">Contacts</StyledNavLink>
+            
             <UserMenu />
           </>
         ) : (

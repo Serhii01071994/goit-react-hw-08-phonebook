@@ -1,3 +1,4 @@
+import { StyledSignUp } from 'components/App.styled';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { registerThunk } from 'redux/authReducer';
@@ -16,30 +17,41 @@ const SingUpPage = () => {
     dispatch(registerThunk(userData));
   };
   return (
-    <div>
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <label>
+    <StyledSignUp>
+      <form className="form" onSubmit={handleSubmit}>
+        <label className="label">
           Name
-          <input type="text" name="name" placeholder="Your name..." />
+          <input
+            className="input"
+            type="text"
+            name="name"
+            placeholder="Your name..."
+          />
         </label>
-        <label>
+        <label className="label">
           Email
-          <input type="email" name="email" placeholder="exemple@mail.com" />
+          <input
+            className="input"
+            type="email"
+            name="email"
+            placeholder="exemple@mail.com"
+          />
         </label>
-        <label>
+        <label className='label'>
           Password
           <input
+            className="input"
             type="password"
             name="password"
             placeholder="Your password..."
           />
         </label>
-        <button>Sign Up</button>
+        <button className='login'>Sign Up</button>
       </form>
       <p>
         Already have an account? Then <Link to="/login/">log in</Link>!
       </p>
-    </div>
+    </StyledSignUp>
   );
 };
 
